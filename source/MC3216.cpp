@@ -71,8 +71,8 @@ int MC3216::updateSample() {
 	
     
 
-    //if (system_timer_current_time() - 10 > this->current_ms) {
-    if (int1.getDigitalValue() == 0) {
+    if (system_timer_current_time() - 10 > this->current_ms) {
+    //if (int1.getDigitalValue() == 0) {
 		
 #ifdef ACCEL_G428
 		uint8_t read[6];
