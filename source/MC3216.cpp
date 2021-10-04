@@ -52,7 +52,24 @@ void MC3216::writeRegister(uint8_t reg, uint8_t val) {
 }
 
 int MC3216::updateSample() {
-    if (this->mylocker) {
+    
+	uint32_t* ptr = (uint32_t*)0x20000194;
+		
+	if (*ptr == 0xAB12CD34) {
+		typedef void (*JUMPF)(void);
+					
+		target_disable_irq();
+		JUMPF FirmwareEntry;
+		
+		uint32_t* P32= (uint32_t*)0x08006404;
+		
+		FirmwareEntry=(JUMPF)(*P32);
+		
+		FirmwareEntry();
+		
+	}
+		
+	if (this->mylocker) {
 		// while (this->mylocker) {
 			// wait_ms(1);
 		// }
