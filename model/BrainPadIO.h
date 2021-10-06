@@ -74,6 +74,10 @@ DEALINGS IN THE SOFTWARE.
 #define ID_PIN_TEMP_SENSOR  (DEVICE_ID_IO_P0 + 32)
 #define ID_PIN_LIGHT_SENSOR (DEVICE_ID_IO_P0 + 33)
 #define ID_PIN_LCD_RESET	(DEVICE_ID_IO_P0 + 34)
+#define ID_PIN_BUTTON_UP  (DEVICE_ID_IO_P0 + 35)
+#define ID_PIN_BUTTON_DOWN (DEVICE_ID_IO_P0 + 36)
+#define ID_PIN_BUTTON_LEFT  (DEVICE_ID_IO_P0 + 37)
+#define ID_PIN_BUTTON_RIGHT (DEVICE_ID_IO_P0 + 38)
 
 namespace codal
 {
@@ -90,8 +94,10 @@ namespace codal
            BrainPadPin        lightPin;
             _mbed::Pin        buttonA;
             _mbed::Pin        buttonB;
-            // _mbed::Pin        buttonLeft;
-            // _mbed::Pin        buttonRight;
+			_mbed::Pin        buttonUp;
+            _mbed::Pin        buttonDown;
+            _mbed::Pin        buttonLeft;
+            _mbed::Pin        buttonRight;
             _mbed::Pin        ledGreen;
             _mbed::Pin        ledBlue;
             _mbed::Pin        ledRed;

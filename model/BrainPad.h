@@ -72,8 +72,10 @@ namespace codal
             BrainPadDisplay             lcd;
             Button                      buttonA;
             Button                      buttonB;
-            // Button                      buttonLeft;
-            // Button                      buttonRight;
+            Button                      buttonUp;
+            Button                      buttonDown;
+			Button                      buttonLeft;
+            Button                      buttonRight;
             CoordinateSpace             space;
             MC3216                     accelerometer;
             BrainPadTemperatureSensor   temperatureSensor;
