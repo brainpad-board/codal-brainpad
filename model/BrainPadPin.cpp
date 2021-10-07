@@ -18,6 +18,9 @@ namespace codal {
             status |= IO_STATUS_ANALOG_IN;
         }
 
-        return ((AnalogIn*)pin)->read_u16() >> 6;
+        if (this->name != 0xF1)
+			return ((AnalogIn*)pin)->read_u16() >> 6;
+		else  // Temp sensor
+			return ((AnalogIn*)pin)->read_u16();
     }
 }
