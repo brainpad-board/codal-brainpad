@@ -40,7 +40,7 @@
             "url": "https://github.com/brainpad-board/codal-core"
         }, 
         {
-            "branch": "master", 
+            "branch": "upgrade_debug", 
             "name": "codal-mbedos", 
             "type": "git", 
             "url": "https://github.com/brainpad-board/codal-mbedos"
