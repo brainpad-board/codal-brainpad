@@ -141,8 +141,8 @@ int MC3216::updateSample() {
 		
 		
 		this->mylocker = true;
-		
-        update({ x, y, z }); //To transform to ENU
+		// TQD_TODO
+        // update({ x, y, z }); //To transform to ENU
 	   
 		this->current_ms = system_timer_current_time();
 		
