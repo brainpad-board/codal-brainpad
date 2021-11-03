@@ -76,22 +76,18 @@ void BrainPadDisplay::flush() {
 }
 
 void BrainPadDisplay::writeScreenBuffer(uint8_t* buffer) {
-    // for (int x = 0; x < 128; x++) {
-        // for (int y = 0; y < 64; y++) {
-            // int offset = (y / 8) + (x * 8);
-            // int mask = 1 << (y % 8);
-            // int index = (x + (y / 8) * 128) + 1;
+    for (int x = 0; x < 128; x++) {
+        for (int y = 0; y < 64; y++) {
+            int offset = (y / 8) + (x * 8);
+            int mask = 1 << (y % 8);
+            int index = (x + (y / 8) * 128) + 1;
 
-            // if (buffer[offset] & mask)
-                // vram[index] |= static_cast<uint8_t>(1 << (y % 8));
-            // else
-                // vram[index] &= static_cast<uint8_t>(~(1 << (y % 8)));
-        // }
-    // }
-	
-	for (int i = 1; i < 1025; i++) {
-		vram[i] = 0xFF;
-	}
+            if (buffer[offset] & mask)
+                vram[index] |= static_cast<uint8_t>(1 << (y % 8));
+            else
+                vram[index] &= static_cast<uint8_t>(~(1 << (y % 8)));
+        }
+    }	
 
     flush();
 }
