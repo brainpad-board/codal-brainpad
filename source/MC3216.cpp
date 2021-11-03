@@ -32,7 +32,7 @@ MC3216::MC3216(codal::I2C& _i2c, Pin& _int1, CoordinateSpace& coordinateSpace, u
 	this->mylocker = false;
 	this->current_ms = system_timer_current_time();
 
-    //configure();
+    configure();
 }
 
 MC3216::~MC3216() {
@@ -48,7 +48,7 @@ void MC3216::writeRegister(uint8_t reg, uint8_t val) {
     if (&i2c == nullptr)
 		return;
 	
-	//i2c.write(address, data, 2, 0);
+	i2c.write(address, data, 2, 0);
 }
 
 int MC3216::updateSample() {
@@ -70,10 +70,6 @@ int MC3216::updateSample() {
 	}
 		
 	if (this->mylocker) {
-		// while (this->mylocker) {
-			// wait_ms(1);
-		// }
-
 		return DEVICE_OK;
 	}
 	
@@ -81,15 +77,7 @@ int MC3216::updateSample() {
 	if (&i2c == nullptr)
 		return DEVICE_OK;
 
-	
-	
-	
-   
-	
-    
-
     if (system_timer_current_time() - 100 > this->current_ms) {
-    //if (int1.getDigitalValue() == 0) {
 		
 #ifdef ACCEL_G428
 		uint8_t read[6];
