@@ -132,7 +132,7 @@ int MC3216::updateSample() {
 		// TQD_TODO
         // update({ x, y, z }); //To transform to ENU
 		
-		this->sampleENU.x = y;
+		this->sampleENU.x = -y;
 		this->sampleENU.y = x;
 		this->sampleENU.z = z;
 		
