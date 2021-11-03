@@ -10,10 +10,6 @@ uint32_t target_state_irq() {
 	return __get_PRIMASK();
 }
 
-uint32_t target_state_irq() {
-	return __get_PRIMASK();
-}
-
 void target_enable_irq()
 {
     __enable_irq();
