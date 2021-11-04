@@ -70,10 +70,6 @@ int MC3216::updateSample() {
 	}
 		
 	if (this->mylocker) {
-		// while (this->mylocker) {
-			// wait_ms(1);
-		// }
-
 		return DEVICE_OK;
 	}
 	
@@ -81,15 +77,7 @@ int MC3216::updateSample() {
 	if (&i2c == nullptr)
 		return DEVICE_OK;
 
-	
-	
-	
-   
-	
-    
-
     if (system_timer_current_time() - 100 > this->current_ms) {
-    //if (int1.getDigitalValue() == 0) {
 		
 #ifdef ACCEL_G428
 		uint8_t read[6];
@@ -141,8 +129,16 @@ int MC3216::updateSample() {
 		
 		
 		this->mylocker = true;
+		// TQD_TODO
+        // update({ x, y, z }); //To transform to ENU
 		
-        update({ x, y, z }); //To transform to ENU
+		this->sampleENU.x = -y;
+		this->sampleENU.y = x;
+		this->sampleENU.z = z;
+		
+		update();
+		
+		
 	   
 		this->current_ms = system_timer_current_time();
 		

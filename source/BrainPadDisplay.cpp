@@ -9,9 +9,14 @@ BrainPadDisplay::BrainPadDisplay(codal::I2C& _i2c, uint16_t address) : i2c(_i2c)
 	
 	_mbed::Pin resetPin(0, RESET_PIN_NAME, PIN_CAPABILITY_DIGITAL);
 	
-	resetPin.setDigitalValue(0);
+	volatile int val = 0;	
+	resetPin.setDigitalValue(val);
+	
 	wait_ms(50);
-	resetPin.setDigitalValue(1);
+	
+	val = 1;
+	resetPin.setDigitalValue(val);
+	
 	wait_ms(50);
 
     writeCommand(0xae);// turn off oled panel
@@ -57,10 +62,13 @@ BrainPadDisplay::BrainPadDisplay(codal::I2C& _i2c, uint16_t address) : i2c(_i2c)
 }
 
 void BrainPadDisplay::writeCommand(int command) {
-    data[0] = 0;
-    data[1] = static_cast<uint8_t>(command);
+    uint8_t dat[2];
+    volatile uint8_t cmd = command;
+	
+	dat[0] = 0;
+    dat[1] = static_cast<uint8_t>(cmd);
 
-    i2c.write(address, data, 2, false);
+    i2c.write(address, dat, 2, false);
 }
 
 void BrainPadDisplay::flush() {
@@ -79,7 +87,7 @@ void BrainPadDisplay::writeScreenBuffer(uint8_t* buffer) {
             else
                 vram[index] &= static_cast<uint8_t>(~(1 << (y % 8)));
         }
-    }
+    }	
 
     flush();
 }
