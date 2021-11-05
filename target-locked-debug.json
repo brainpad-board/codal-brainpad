@@ -34,13 +34,13 @@
     "generate_hex": true, 
     "libraries": [
         {
-            "branch": "upgrade", 
+            "branch": "master", 
             "name": "codal-core", 
             "type": "git", 
             "url": "https://github.com/brainpad-board/codal-core"
         }, 
         {
-            "branch": "upgrade_debug", 
+            "branch": "debug_mode", 
             "name": "codal-mbedos", 
             "type": "git", 
             "url": "https://github.com/brainpad-board/codal-mbedos"
